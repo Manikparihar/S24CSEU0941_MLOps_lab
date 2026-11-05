@@ -9,7 +9,7 @@ true:
 jobs:
   test:
     runs-on: ubuntu-latest
-    steps:
+    steps: &id001
     - name: Get the code
       uses: actions/checkout@v4
     - name: Install Python
@@ -24,3 +24,4 @@ jobs:
       run: python -c "import yaml, pathlib; yaml.safe_load(pathlib.Path('config.yaml').read_text())"
     - name: Check the model can be imported
       run: python -c "import orders; print(orders.minutes_per_km(30, 10))"
+steps: *id001
